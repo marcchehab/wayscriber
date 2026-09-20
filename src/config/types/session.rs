@@ -5,15 +5,15 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SessionConfig {
     /// Persist drawings from transparent mode between sessions.
-    #[serde(default)]
+    #[serde(default = "default_persist_transparent")]
     pub persist_transparent: bool,
 
     /// Persist drawings from whiteboard mode between sessions.
-    #[serde(default)]
+    #[serde(default = "default_persist_whiteboard")]
     pub persist_whiteboard: bool,
 
     /// Persist drawings from blackboard mode between sessions.
-    #[serde(default)]
+    #[serde(default = "default_persist_blackboard")]
     pub persist_blackboard: bool,
 
     /// Persist undo/redo history between sessions.
@@ -80,9 +80,9 @@ pub struct SessionConfig {
 impl Default for SessionConfig {
     fn default() -> Self {
         Self {
-            persist_transparent: true,
-            persist_whiteboard: true,
-            persist_blackboard: true,
+            persist_transparent: default_persist_transparent(),
+            persist_whiteboard: default_persist_whiteboard(),
+            persist_blackboard: default_persist_blackboard(),
             persist_history: default_persist_history(),
             restore_tool_state: default_restore_tool_state(),
             autosave_enabled: default_autosave_enabled(),
@@ -172,6 +172,18 @@ fn default_backup_retention() -> usize {
 }
 
 fn default_session_per_output() -> bool {
+    true
+}
+
+fn default_persist_transparent() -> bool {
+    true
+}
+
+fn default_persist_whiteboard() -> bool {
+    true
+}
+
+fn default_persist_blackboard() -> bool {
     true
 }
 
