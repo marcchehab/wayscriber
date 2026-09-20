@@ -916,6 +916,10 @@ help_overlay_context_filter = true
 # Show compositor capability warnings when the overlay starts
 show_capabilities_warning = true
 
+# Show the transient Light Mode toasts (enter, exit, draw/passthrough switch).
+# Capability warnings are unaffected.
+show_mode_toasts = true
+
 # Show automatic first-run guidance, discovery tips, and shortcut coaching.
 # Automatic tips can also be acknowledged individually, and stop after three
 # appearances. The guided tour remains available manually when this is false.

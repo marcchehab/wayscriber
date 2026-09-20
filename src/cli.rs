@@ -567,7 +567,13 @@ pub(crate) fn print_help() {
     println!("Options:");
     println!("  -d, --daemon                  Run as background daemon");
     println!("      --daemon-toggle           Toggle the running daemon");
-    println!("      --daemon-action ACTION    Send an action to the active overlay");
+    println!(
+        "      --daemon-action ACTION    Send an action to the active overlay
+                                (toggle_toolbar, clear_canvas, toggle_freeze,
+                                 toggle_help, toggle_board_picker,
+                                 capture_full, capture_window,
+                                 capture_region, ...)"
+    );
     println!("      --light-toggle            Toggle light passthrough mode");
     println!("      --light-draw-toggle       Toggle drawing in light passthrough mode");
     println!("      --light-draw-on           Turn light-mode drawing on");

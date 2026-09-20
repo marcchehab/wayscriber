@@ -140,7 +140,9 @@ impl InputState {
         } else {
             "Light Mode passthrough"
         };
-        self.push_toast(ToastPriority::Info, "light_mode", Toast::info(message));
+        if self.ui_visibility.show_mode_toasts {
+            self.push_toast(ToastPriority::Info, "light_mode", Toast::info(message));
+        }
         self.dirty_tracker.mark_full();
         self.needs_redraw = true;
         self.light_mode_drawing_active()
@@ -163,11 +165,13 @@ impl InputState {
             }
         }
 
-        self.push_toast(
-            ToastPriority::Info,
-            "light_mode",
-            Toast::info("Stopping Light Mode"),
-        );
+        if self.ui_visibility.show_mode_toasts {
+            self.push_toast(
+                ToastPriority::Info,
+                "light_mode",
+                Toast::info("Stopping Light Mode"),
+            );
+        }
         self.dirty_tracker.mark_full();
         self.needs_redraw = true;
     }
@@ -216,11 +220,13 @@ impl InputState {
         } else {
             "Light Mode passthrough"
         };
-        self.push_toast(
-            ToastPriority::Action,
-            "light_mode",
-            Toast::info(message).action("Exit", Action::ToggleLightMode),
-        );
+        if self.ui_visibility.show_mode_toasts {
+            self.push_toast(
+                ToastPriority::Action,
+                "light_mode",
+                Toast::info(message).action("Exit", Action::ToggleLightMode),
+            );
+        }
         self.dirty_tracker.mark_full();
         self.needs_redraw = true;
     }

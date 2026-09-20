@@ -116,6 +116,26 @@ fn apply_tray_action(state: &mut WaylandState, action: TrayAction) {
                 .toggle_board_picker_with_measurer(state.render.text_measurer());
             state.input_state.needs_redraw = true;
         }
+        TrayAction::ToggleToolbar => {
+            state.input_state.handle_action_with_resources(
+                crate::input::state::InputTextResources {
+                    measurer: state.render.text_measurer(),
+                    ui_engine: state.render.ui_text(),
+                },
+                Action::ToggleToolbar,
+            );
+            state.input_state.needs_redraw = true;
+        }
+        TrayAction::ClearCanvas => {
+            state.input_state.handle_action_with_resources(
+                crate::input::state::InputTextResources {
+                    measurer: state.render.text_measurer(),
+                    ui_engine: state.render.ui_text(),
+                },
+                Action::ClearCanvas,
+            );
+            state.input_state.needs_redraw = true;
+        }
         TrayAction::ToggleLightMode => {
             state.input_state.toggle_light_mode_with_resources(
                 crate::input::state::InputTextResources {
