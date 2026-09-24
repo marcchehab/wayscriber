@@ -1198,3 +1198,16 @@ fn micro_chip_event_restores_the_full_strip() {
         ))
     );
 }
+
+#[test]
+fn hidden_ui_warning_respects_config_opt_out() {
+    let mut state = create_test_input_state();
+    state.ui_visibility.show_hidden_ui_warning = false;
+    hide_all_chrome(&mut state);
+    assert!(
+        state
+            .active_toast()
+            .is_none_or(|toast| !toast.message.starts_with("All UI hidden")),
+        "ui.show_hidden_ui_warning = false suppresses the warning"
+    );
+}

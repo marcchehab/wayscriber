@@ -47,7 +47,8 @@ impl InputState {
     }
 
     pub(crate) fn warn_if_all_chrome_hidden(&mut self) {
-        if self.toolbar_visible()
+        if !self.ui_visibility.show_hidden_ui_warning
+            || self.toolbar_visible()
             || self.status_hud_effectively_visible()
             || self.presenter_will_restore_visible_chrome()
         {

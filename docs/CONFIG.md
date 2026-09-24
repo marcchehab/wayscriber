@@ -920,6 +920,10 @@ show_capabilities_warning = true
 # Capability warnings are unaffected.
 show_mode_toasts = true
 
+# Show the "All UI hidden" toast when hiding the toolbar or status bar leaves
+# no visible chrome.
+show_hidden_ui_warning = true
+
 # Show automatic first-run guidance, discovery tips, and shortcut coaching.
 # Automatic tips can also be acknowledged individually, and stop after three
 # appearances. The guided tour remains available manually when this is false.

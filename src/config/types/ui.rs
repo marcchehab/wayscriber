@@ -126,6 +126,11 @@ pub struct UiConfig {
     #[serde(default = "default_show_mode_toasts")]
     pub show_mode_toasts: bool,
 
+    /// Show the "All UI hidden" recovery toast when hiding the toolbar or
+    /// status bar leaves no visible chrome.
+    #[serde(default = "default_show_hidden_ui_warning")]
+    pub show_hidden_ui_warning: bool,
+
     /// Show rectangle and ellipse preview dimensions in logical board pixels.
     #[serde(default = "default_show_shape_size_readout")]
     pub show_shape_size_readout: bool,
@@ -209,6 +214,7 @@ impl Default for UiConfig {
             show_capabilities_warning: default_show_capabilities_warning(),
             show_onboarding_hints: default_show_onboarding_hints(),
             show_mode_toasts: default_show_mode_toasts(),
+            show_hidden_ui_warning: default_show_hidden_ui_warning(),
             show_shape_size_readout: default_show_shape_size_readout(),
             preferred_output: None,
             multi_monitor_enabled: default_multi_monitor_enabled(),
@@ -333,6 +339,10 @@ fn default_show_onboarding_hints() -> bool {
 }
 
 fn default_show_mode_toasts() -> bool {
+    true
+}
+
+fn default_show_hidden_ui_warning() -> bool {
     true
 }
 
