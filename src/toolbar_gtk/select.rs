@@ -3,7 +3,7 @@
 //! The GTK frontend only replaces the built-in bars where the built-in
 //! bars would have used their own layer surfaces: gtk4-layer-shell needs
 //! the same `zwlr_layer_shell_v1` protocol, and compositors that force the
-//! inline fallback (overlay-layer canvas on niri/sway, forced inline)
+//! inline fallback (overlay-layer canvas on Hyprland/niri/sway, forced inline)
 //! would cover separate GTK surfaces just the same.
 
 use std::sync::OnceLock;
