@@ -94,7 +94,14 @@ impl WaylandState {
 
         if top_visible != self.toolbar.is_top_visible() {
             self.toolbar.set_top_visible(top_visible);
-            self.input_state.needs_redraw = true;
+            if inline_active {
+                // Inline bars live in the main surface's pixels. Other damage
+                // queued with the toggle (status bar relayout) would otherwise
+                // make the next render partial and leave a hidden bar painted.
+                self.mark_inline_toolbar_full_damage();
+            } else {
+                self.input_state.needs_redraw = true;
+            }
         }
 
         let any_visible = self.toolbar.is_visible();
